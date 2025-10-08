@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Праздник к нам приходит - Магазин новогодних подарков</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #C0392B; /* Традиционный красный */
+            --secondary-green: #27AE60; /* Традиционный зеленый */
+            --accent-gold: #F1C40F; /* Золотой акцент */
+            --text-dark: #34495E;
+            --text-light: #ECF0F1;
+            --bg-light: #ECF0F1;
+            --bg-dark: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Общие стили для секций */
+        section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            color: var(--primary-red);
+            font-family: 'Pacifico', cursive;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        /* Хедер */
+        header {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        header .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8em;
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background-color: var(--text-light);
+            margin-bottom: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Главный раздел (Hero) */
+        #hero {
+            /* --- ИЗМЕНЕНИЕ ЗДЕСЬ --- */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('generated-Xmas.png') no-repeat center center/cover;
+            color: var(--text-light);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            padding-top: 80px; /* Отступ от фиксированного хедера */
+        }
+
+        #hero h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        #hero p {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease-out 0.3s;
+        }
+
+        .btn {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            animation: zoomIn 1s ease-out 0.6s;
+        }
+
+        .btn:hover {
+            background-color: #E74C3C; /* Чуть светлее красный */
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Анимации */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Раздел "О компании" */
+        #about {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        #about .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        #about p {
+            font-size: 1.1em;
+            text-align: left;
+        }
+
+        /* Раздел "Предварительный просмотр меню" (Категории) */
+        #categories {
+            background: var(--secondary-green);
+            color: var(--text-light);
+        }
+
+        #categories h2 {
+            color: var(--accent-gold);
+        }
+
+        #categories h2::after {
+            background-color: var(--primary-red);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .category-item {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-item img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            filter: brightness(0.9);
+            transition: filter 0.3s ease;
+        }
+
+        .category-item:hover img {
+            filter: brightness(1);
+        }
+
+        .category-item h3 {
+            font-size: 1.8em;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .category-item p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .category-item .btn {
+            background-color: var(--secondary-green);
+            color: var(--text-light);
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 30px;
+            box-shadow: none;
+        }
+
+        .category-item .btn:hover {
+            background-color: #2ECC71;
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Раздел "Контакты" */
+        #contact {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        #contact h2 {
+            color: var(--accent-gold);
+        }
+
+        #contact h2::after {
+            background-color: var(--primary-red);
+        }
+
+        #contact .contact-info {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-size: 1.15em;
+        }
+
+        #contact .contact-info p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #contact .contact-info p strong {
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+
+        #contact .contact-map {
+            margin-top: 50px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        #contact .contact-map iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        /* Футер */
+        footer {
+            background: var(--primary-red);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 5%;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            header nav {
+                display: none; /* Скрываем обычное меню */
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-dark);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+                padding: 20px 0;
+            }
+
+            header nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            #hero h1 {
+                font-size: 3em;
+            }
+
+            #hero p {
+                font-size: 1.3em;
+            }
+
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero h1 {
+                font-size: 2.5em;
+            }
+            #hero p {
+                font-size: 1.1em;
+            }
+            .btn {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .category-item h3 {
+                font-size: 1.5em;
+            }
+            .category-item p {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Заголовок и навигационное меню -->
+    <header>
+        <a href="#" class="logo">Праздник к нам приходит</a>
+        <nav>
+            <ul>
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#categories">Категории</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Главный раздел -->
+    <section id="hero">
+        <h1>Счастье в каждой коробке!</h1>
+        <p>Найдите идеальный новогодний подарок для каждого в вашем списке.</p>
+        <a href="#categories" class="btn">Выбрать подарки!</a>
+    </section>
+
+    <!-- Раздел "О компании" -->
+    <section id="about">
+        <h2>Наша история</h2>
+        <div class="container">
+            <p>Добро пожаловать в "Праздник к нам приходит" – ваш уютный уголок для волшебства и радости! Мы верим, что каждый подарок должен нести в себе частичку чуда и искренних эмоций. Наш магазин был создан с любовью к новогодним традициям и желанием помочь вам сделать этот праздник незабываемым.</p>
+            <p>С 2020 года мы тщательно отбираем самые красивые открытки, самые милые игрушки и самые продуманные подарочные наборы, чтобы вы могли без труда найти именно то, что вызовет улыбку у ваших близких. От классических символов Рождества до современных и оригинальных сюрпризов – у нас есть всё, чтобы ваш Новый год был наполнен теплом и светом.</p>
+            <p>Приходите к нам за вдохновением и позвольте нам помочь вам создать истинную атмосферу праздника!</p>
+        </div>
+    </section>
+
+    <!-- Раздел с предварительным просмотром меню (Категории) -->
+    <section id="categories">
+        <h2>Наши новогодние коллекции</h2>
+        <div class="category-grid">
+            <div class="category-item">
+                <img src="https://source.unsplash.com/400x250/?christmas,cards" alt="Новогодние открытки">
+                <h3>Открытки</h3>
+                <p>Идеальный способ выразить свои наилучшие пожелания. От классических до современных дизайнов.</p>
+                <a href="#" class="btn">Подробнее</a>
+            </div>
+            <div class="category-item">
+                <img src="https://source.unsplash.com/400x250/?christmas,toys" alt="Новогодние игрушки">
+                <h3>Игрушки</h3>
+                <p>Мягкие игрушки, елочные украшения и другие милые сюрпризы для детей и взрослых.</p>
+                <a href="#" class="btn">Подробнее</a>
+            </div>
+            <div class="category-item">
+                <img src="https://source.unsplash.com/400x250/?christmas,gift-sets" alt="Новогодние наборы">
+                <h3>Наборы</h3>
+                <p>Заботливо составленные подарочные наборы для любого случая и получателя.</p>
+                <a href="#" class="btn">Подробнее</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел контактов -->
+    <section id="contact">
+        <h2>Свяжитесь с нами</h2>
+        <div class="contact-info">
+            <p><strong>Адрес:</strong> г. Счастливый, ул. Новогодняя, д. 25</p>
+            <p><strong>Телефон:</strong> +7 (XXX) XXX-XX-XX</p>
+            <p><strong>Email:</strong> info@prazdnikk.ru</p>
+            <p><strong>Часы работы:</strong> Ежедневно с 10:00 до 20:00 (с 1 по 31 декабря)</p>
+            <p>Обычные часы: Пн-Пт с 11:00 до 19:00</p>
+        </div>
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.778848149202!2d37.61763351589332!3d55.7512440805562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50d240d423%3A0xc3f5a147e0a2b53c!2sRed%20Square!5e0!3m2!1sen!2sru!4v1670123456789!5m2!1sen!2sru" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>&copy; 2025 "Праздник к нам приходит". Все права защищены.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                     // Закрыть мобильное меню после клика
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                });
+            });
+
+            // Мобильное меню
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('header nav');
+
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Изменение фона хедера при прокрутке
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'var(--primary-red)';
+                } else {
+                    header.style.backgroundColor = 'var(--bg-dark)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
