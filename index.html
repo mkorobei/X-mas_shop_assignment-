@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-red: #A93226; /* Более глубокий красный */
-            --secondary-green: #1E8449; /* Более насыщенный зеленый */
+            --primary-red: #a42a2a; /* Более глубокий красный */
+            --secondary-green: #265950; /* Более насыщенный зеленый */
             --accent-gold: #F1C40F; /* Золотой акцент */
             --text-dark: #34495E;
             --text-light: #ECF0F1;
@@ -78,6 +78,13 @@
             font-size: 1.8em;
             color: var(--accent-gold);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo-img {
+            height: 2.5em;
+            margin-right: 10px;
         }
 
         nav ul {
@@ -462,7 +469,10 @@
 
     <!-- Заголовок и навигационное меню -->
     <header>
-        <a href="#" class="logo">Праздник к нам приходит</a>
+        <a href="#" class="logo">
+            <img src="logo.png" alt="logo" class="header-logo-img">
+            Праздник к нам приходит
+        </a>
         <nav>
             <ul>
                 <li><a href="#hero">Главная</a></li>
