@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Праздник к нам приходит - Магазин новогодних подарков</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-red: #C0392B; /* Традиционный красный */
-            --secondary-green: #27AE60; /* Традиционный зеленый */
+            --primary-red: #A93226; /* Более глубокий красный */
+            --secondary-green: #1E8449; /* Более насыщенный зеленый */
             --accent-gold: #F1C40F; /* Золотой акцент */
             --text-dark: #34495E;
             --text-light: #ECF0F1;
@@ -23,7 +23,7 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Lato', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             scroll-behavior: smooth;
@@ -39,7 +39,7 @@
             font-size: 2.8em;
             margin-bottom: 40px;
             color: var(--primary-red);
-            font-family: 'Pacifico', cursive;
+            font-family: 'Playfair Display', serif;
             position: relative;
             display: inline-block;
         }
@@ -150,7 +150,7 @@
         }
 
         #hero h1 {
-            font-family: 'Pacifico', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: 4.5em;
             margin-bottom: 20px;
             color: var(--accent-gold);
@@ -179,7 +179,7 @@
         }
 
         .btn:hover {
-            background-color: #E74C3C; /* Чуть светлее красный */
+            background-color: #C0392B; /* Соответствует новой палитре */
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
@@ -276,7 +276,7 @@
             font-size: 1.8em;
             color: var(--primary-red);
             margin-bottom: 15px;
-            font-family: 'Pacifico', cursive;
+            font-family: 'Playfair Display', serif;
         }
 
         .category-item p {
@@ -286,16 +286,20 @@
         }
 
         .category-item .btn {
-            background-color: var(--secondary-green);
-            color: var(--text-light);
-            padding: 12px 25px;
+            background-color: transparent;
+            color: var(--secondary-green);
+            padding: 10px 25px;
             font-size: 1em;
             border-radius: 30px;
-            box-shadow: none;
+            border: 2px solid var(--secondary-green);
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
         }
 
         .category-item .btn:hover {
-            background-color: #2ECC71;
+            background-color: var(--secondary-green);
+            color: var(--text-light);
             transform: translateY(-3px);
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
         }
@@ -477,7 +481,7 @@
     <!-- Главный раздел -->
     <section id="hero">
         <h1>Счастье в каждой коробке!</h1>
-        <p>Найдите идеальный новогодний подарок для каждого в вашем списке.</p>
+        <p>Найдите лучший подарок для каждого в вашем списке</p>
         <a href="#categories" class="btn">Выбрать подарки!</a>
     </section>
 
